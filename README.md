@@ -1,3 +1,15 @@
+# Getting Started
+
+run npm install to install required packages
+use python3 -m venv venv create virtual env
+use pip install -r requirements.txt to install required packages in the venv
+
+# Running
+
+IMPORTANT: Run npm start and npm run start-api in two seperate terminals or both at once using tmux.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
