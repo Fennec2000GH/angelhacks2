@@ -1,17 +1,29 @@
+
 import time #this is just testing
-from flask import Flask, request
+from flask import Flask, request, jsonify
+import sys
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
+
+app.run(
+    debug = True
+)
+
+data = []
 
 @app.route('/')
 def index():
-    return 'hello world!'
+    return "hello world"
 
 @app.route('/time')
 def get_current_time():
     return {'time': time.time()}
 
-@app.route('/data')
+@app.route('/data', methods=['POST'])
 def get_data():
-    data = request.args.get('body')
-    return data
+    data = request.get_json()
+    #Transform Data under here:
+    
+    return jsonify(data)
+
