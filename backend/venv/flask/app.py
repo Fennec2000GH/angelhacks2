@@ -12,8 +12,6 @@ app.run(
     debug = True
 )
 
-data = []
-
 @app.route('/')
 def index():
     return "hello world"
@@ -24,9 +22,18 @@ def get_current_time():
 
 @app.route('/data', methods=['POST'])
 def get_data():
-    data = request.get_json()
-    print(data)
+    raw_data = request.get_json()
+    print(raw_data)
+    data = list(raw_data)
     #Transform Data under here:
-    summarified = summary.summarizeLexRank(data)
+    summarified = "No algorithm chosen"
+    if data[1] == "LexRank":
+        summarified = summary.summarizeLexRank(data[0])
+    elif data[1] == "Luhn":
+        summarified = summary.summarizeLuhn(data[0])
+    elif data[1] == "LSA":
+        summarified = summary.summarizeLSA(data[0]) 
+    elif data[1] == "KL":
+        summarified = summary.summarizeKL(data[0]) 
     print(summarified)
     return jsonify(summarified)

@@ -19,7 +19,7 @@ export default function Body() {
       method: 'POST',
       headers: { "Content-type": "application/json; charset=UTF-8" },
       mode: 'cors',
-      body: JSON.stringify(textToSummarize)
+      body: JSON.stringify([textToSummarize, algorithm])
     })
     .then((response) => {
       return response.json().then((data) => {
@@ -34,6 +34,7 @@ export default function Body() {
 
   const handleAlgorithmsChange = (value) => {
     setAlgorithm(value);
+    console.log(algorithm)
   }
 
   return (
@@ -63,7 +64,13 @@ export default function Body() {
           onChange={handleAlgorithmsChange}
         />
         <Spacer minH=".5rem" maxH="1rem" />
-        <Button onClick={handleClick}>Summarify it</Button>
+        <Button 
+        size={"lg"}
+        w={"300px"}
+        h={"75px"}
+        onClick={handleClick}
+        >Summarify it
+        </Button>
         <Textarea
           size={"lg"}
           readOnly={true}
