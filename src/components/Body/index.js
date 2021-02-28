@@ -1,7 +1,9 @@
+
 import { Button, Flex, Text, Textarea, VStack } from "@chakra-ui/react";
 import React from 'react';
 
 export default function Body() {
+    //first text box
     let [value, setValue] = React.useState("")
 
     let handleInputChange = (e) => {
@@ -9,9 +11,11 @@ export default function Body() {
       setValue(inputValue)
     }
     
+    let [outputValue, setOutputValue] = React.useState("")
+
+
     return (
         <Flex
-            w="100vw"
             minH={"50vh"}
             justify={"center"}
         >
@@ -29,14 +33,25 @@ export default function Body() {
                 <Button
                     onClick={() => {
                         fetch('/data', {
-                            method: 'POST', 
+                            method: 'POST',
+                            headers: {"Content-type": "application/json; charset=UTF-8"},
                             mode: 'cors',
-                            body: JSON.stringify(value)})  
+                            body: JSON.stringify(value)})
+                            .then((response) => { 
+                                return response.json().then((data) => {
+                                    console.log(data); //for debugging
+                                    setOutputValue(data)
+                                    return data;
+                                }).catch((err) => {
+                                    console.log(err);
+                                }) 
+                            });
                         }}
                 >Big Red Button</Button>
                 <Textarea
                     size={"lg"}
                     placeholder={"Lorem ipsum"}
+                    value={outputValue}
                 ></Textarea>
             </VStack>
         </Flex>
