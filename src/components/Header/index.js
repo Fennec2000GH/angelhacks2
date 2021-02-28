@@ -5,7 +5,7 @@ export default function Header() {
     <Flex
       justifyContent="center"
     >
-      <Heading as={"h1"}>Zusammenfassung</Heading>
+      <Heading as={"h1"}>Summarify</Heading>
     </Flex>
   )
 }
