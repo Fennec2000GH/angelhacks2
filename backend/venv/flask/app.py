@@ -24,6 +24,5 @@ def get_current_time():
 def get_data():
     data = request.get_json()
     #Transform Data under here:
-    
-    return jsonify(data)
 
+    return jsonify(data)

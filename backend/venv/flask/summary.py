@@ -5,9 +5,12 @@ from sumy.nlp.tokenizers import Tokenizer
 
 text = \
 """
-This is a project for the AngelHacks 2021 hackathon. We are trying to create a simple web application that summarizes notes for students. Simply
-upload a text file or directly paste your text in the textbox below. The frontend will be created with the React framework. The backend includes
-a Flask application and a natural language processing library in Python. The project will be posted on Devpost by Sunday.
+This is a project for the AngelHacks 2021 hackathon. We are trying to create a
+simple web application that summarizes notes for students. Simply upload a text
+file or directly paste your text in the textbox below. The frontend will be
+created with the React framework. The backend includes a Flask application and a
+natural language processing library in Python. The project will be posted on
+Devpost by Sunday.
 """
 
 parser_string = PlaintextParser.from_string(text, Tokenizer('english'))
@@ -34,7 +37,8 @@ for sent in summary:
     print(sent)
 
 # Luhn
-# Based on the frequency of important words only, while ignoring stop words (unimportant fillers e.g. the, a, at, for) and less frequent words
+# Based on the frequency of important words only, while ignoring stop words
+# (unimportant fillers e.g. the, a, at, for) and less frequent words
 from sumy.summarizers.luhn import LuhnSummarizer
 print('\nLuhn')
 summarizer = LuhnSummarizer()
@@ -66,7 +70,8 @@ for sent in summary:
     print(sent)
 
 # KL
-# Selects sentences by trying to match word distribution of sample as close to the original text as possible
+# Selects sentences by trying to match word distribution of sample as close to
+# the original text as possible
 from sumy.summarizers.kl import KLSummarizer
 print('\nKL')
 summarizer = KLSummarizer()
