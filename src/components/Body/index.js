@@ -1,36 +1,39 @@
-
-import { Button, Flex, Text, Textarea, VStack } from "@chakra-ui/react";
+import { Button, Flex, Spacer, Text, Textarea, VStack } from "@chakra-ui/react";
 import React from 'react';
+import AlgorithmsRadioCard from './AlgorithmsRadioCard'
 
 export default function Body() {
-  //first text box
-  let [value, setValue] = React.useState("")
+  const algorithms = ["LexRank", "Luhn", "LSA", "KL"];
+  let [textToSummarize, setTextToSummarize] = React.useState("")
+  let [outputValue, setOutputValue] = React.useState("");
+  let [algorithm, setAlgorithm] = React.useState(algorithms[0]);
 
   let handleInputChange = (e) => {
     let inputValue = e.target.value
-    setValue(inputValue)
+    setTextToSummarize(inputValue)
   }
 
-  let [outputValue, setOutputValue] = React.useState("");
-
-  function handleClick() {
-    return () => {
-      fetch('/data', {
-        method: 'POST',
-        headers: { "Content-type": "application/json; charset=UTF-8" },
-        mode: 'cors',
-        body: JSON.stringify(value)
-      })
-      .then((response) => {
-        return response.json().then((data) => {
-          console.log(data); //for debugging
-          setOutputValue(data);
-          return data;
-        }).catch((err) => {
-          console.log(err);
-        });
+  const handleClick = (e) => {
+    e.preventDefault();
+    fetch('/data', {
+      method: 'POST',
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+      mode: 'cors',
+      body: JSON.stringify(textToSummarize)
+    })
+    .then((response) => {
+      return response.json().then((data) => {
+        console.log(data); //for debugging
+        setOutputValue(data);
+        return data;
+      }).catch((err) => {
+        console.log(err);
       });
-    };
+    });
+  }
+
+  const handleAlgorithmsChange = (value) => {
+    setAlgorithm(value);
   }
 
   return (
@@ -50,12 +53,17 @@ export default function Body() {
           size={"lg"}
           placeholder={"Lorem ipsum"}
           onChange={handleInputChange}
-          value={value}
+          value={textToSummarize}
         >
         </Textarea>
-        <Button
-          onClick={handleClick()}
-        >Summarify it</Button>
+        <Text>Select the algorithm to use:</Text>
+        <AlgorithmsRadioCard
+          algorithms={algorithms}
+          defaultValue={algorithm}
+          onChange={handleAlgorithmsChange}
+        />
+        <Spacer minH=".5rem" maxH="1rem" />
+        <Button onClick={handleClick}>Summarify it</Button>
         <Textarea
           size={"lg"}
           readOnly={true}
