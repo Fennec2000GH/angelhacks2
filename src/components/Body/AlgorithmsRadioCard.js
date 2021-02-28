@@ -16,7 +16,7 @@ function CustomRadio(props) {
         borderWidth="1px"
         _checked={{
           color: "white",
-          bg: "gray"
+          bg: "#2b6cb0"
         }}
         _focus={{
           boxShadow: "outline",

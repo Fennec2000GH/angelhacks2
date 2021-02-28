@@ -103,7 +103,7 @@ def summarizeKL(text):
     #summary = summarizer(parser_file.document, 2)
     #for sent in summary:
     #    print(sent)
-  
+
 
 # Reading from PDF and word documents
 import PyPDF2
@@ -148,7 +148,7 @@ def read_pdf(pdf_name: str, page_numbers: Iterable[int]=None, by_paragraph: bool
 
 def read_word_docx(docx_name: str, by_paragraph: bool=False):
     """
-    Read word document into a list. By default, the whole document is read as a single string element into the list. 
+    Read word document into a list. By default, the whole document is read as a single string element into the list.
 
     Args:
         docx_name (str): [description]
@@ -167,23 +167,25 @@ def read_word_docx(docx_name: str, by_paragraph: bool=False):
 
     return full_text
 
-# PDF and word docx demo
-print('\nPDF extract by pages only:\n')
-texts = read_pdf(pdf_name='./test/short_stories.pdf', page_numbers=[1,2,4])
-for text in texts:
-    print(f'{text}\n')
+##########################
+# # PDF and word docx demo
 
-print('\nPDF extract by pages and paragraphs:\n')
-texts = read_pdf(pdf_name='./test/short_stories.pdf', page_numbers=[1,2,4], by_paragraph=True)
-for text in texts:
-    print(f'{text}\n')
+# print('\nPDF extract by pages only:\n')
+# texts = read_pdf(pdf_name='./test/short_stories.pdf', page_numbers=[1,2,4])
+# for text in texts:
+#     print(f'{text}\n')
 
-print('\nWord docx extract full text only:\n')
-texts = read_word_docx(docx_name='./test/Feeling unproductive_ Maybe you should stop overthinking. .docx')
-for text in texts:
-    print(f'{text}\n')
+# print('\nPDF extract by pages and paragraphs:\n')
+# texts = read_pdf(pdf_name='./test/short_stories.pdf', page_numbers=[1,2,4], by_paragraph=True)
+# for text in texts:
+#     print(f'{text}\n')
 
-print('\nWord docx extract by paragraphs:\n')
-texts = read_word_docx(docx_name='./test/Feeling unproductive_ Maybe you should stop overthinking. .docx', by_paragraph=True)
-for text in texts:
-    print(f'{text}\n')
+# print('\nWord docx extract full text only:\n')
+# texts = read_word_docx(docx_name='./test/Feeling unproductive_ Maybe you should stop overthinking. .docx')
+# for text in texts:
+#     print(f'{text}\n')
+
+# print('\nWord docx extract by paragraphs:\n')
+# texts = read_word_docx(docx_name='./test/Feeling unproductive_ Maybe you should stop overthinking. .docx', by_paragraph=True)
+# for text in texts:
+#     print(f'{text}\n')
