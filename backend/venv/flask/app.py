@@ -3,6 +3,8 @@ import time #this is just testing
 from flask import Flask, request, jsonify
 import sys
 
+import summary
+
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
@@ -23,7 +25,8 @@ def get_current_time():
 @app.route('/data', methods=['POST'])
 def get_data():
     data = request.get_json()
+    print(data)
     #Transform Data under here:
-    
-    return jsonify(data)
-
+    summarified = summary.summarizeLexRank(data)
+    print(summarified)
+    return jsonify(summarified)
