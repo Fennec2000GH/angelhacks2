@@ -1,3 +1,12 @@
+# Summarify
+
+![Frontend](https://img.shields.io/badge/Frontend-React-deepskyblue?style=flat-square&logo=appveyor)
+![Backend](https://img.shields.io/badge/Backend-Flask-darkgreen?style=flat-square&logo=appveyor)
+![Languages](https://img.shields.io/badge/Languages-JavaScript,HTML,CSS,Python-slateblue?style=flat-square&logo=appveyor)
+
+# Full Demo Video 
+https://www.youtube.com/watch?v=AgzC_uuOSPg
+
 # Getting Started
 
 run npm install to install required packages
